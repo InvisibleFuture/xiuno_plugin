@@ -1,0 +1,11 @@
+{
+    "name": "UI",
+    "brief": "界面定制",
+    "version": "1.1",
+    "bbs_version": "4.0.2",
+    "installed": 1,
+    "enable": 1,
+    "hooks_rank": [],
+    "overwrites_rank": [],
+    "dependencies": []
+}

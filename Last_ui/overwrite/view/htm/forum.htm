@@ -1,0 +1,40 @@
+<?php include _include(APP_PATH.'view/htm/header.inc.htm');?>
+
+<!--{hook forum_start.htm}-->
+
+<div class="row">
+	<div class="col-lg-12 main">
+				
+		<div class="card card-threadlist">
+			<div class="card-header d-flex justify-content-between">
+				<div style="width:100%"><h4 style="margin-bottom: 0"><center><?php echo $forum['name'];?></center></h4></div>
+			</div>
+			<div class="card-body">
+				<ul class="list-unstyled threadlist mb-0">
+					<!--{hook forum_threadlist_before.htm}-->
+					<?php include _include(APP_PATH.'view/htm/thread_list.inc.htm');?>
+					<!--{hook forum_threadlist_after.htm}-->
+				</ul>
+			</div>
+		</div>
+
+		<?php include _include(APP_PATH.'view/htm/thread_list_mod.inc.htm');?>
+		
+		<!--{hook forum_page_before.htm}-->
+		<nav class="my-3"><ul class="pagination justify-content-center flex-wrap"><?php echo $pagination; ?></ul></nav>
+		<!--{hook forum_page_after.htm}-->
+	</div>
+		
+
+</div>
+
+
+<!--{hook forum_end.htm}-->
+
+<?php include _include(APP_PATH.'view/htm/footer.inc.htm');?>
+
+<script>
+$('li[data-active="fid-<?php echo $fid;?>"]').addClass('active');
+</script>
+
+<!--{hook forum_js.htm}-->
