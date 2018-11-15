@@ -1,0 +1,41 @@
+<script>
+//延时150ms? 先删掉影响样式效果的 .bg-inverse
+$('.navbar').removeClass('bg-inverse');
+//setTimeout("$('.navbar').removeClass('bg-inverse')",150)
+
+
+//依赖JQ,应该放在页面最后加载
+var home = location.href,
+    s = $('#bgvideo')[0],
+    Siren = {
+	
+	// 显示&隐藏导航栏
+    NH: function(){
+        var h1 = 0,
+            h2 = 400,
+            ss = $(document).scrollTop();
+        $(window).scroll(function(){
+            var s = $(document).scrollTop();
+            if(s== h1){
+                $('.navbar').removeClass('yya');
+            }if(s > h1){
+                $('.navbar').addClass('yya');
+            }if(s > h2){
+                $('.navbar').addClass('gizle');
+                if(s > ss){
+                    $('.navbar').removeClass('sabit');
+                }else{
+                    $('.navbar').addClass('sabit');
+                }
+                ss = s;
+            }
+        }); 
+    },
+}
+
+    $(function() {
+
+    Siren.NH(); // 显示&隐藏导航栏
+
+    })
+</script>

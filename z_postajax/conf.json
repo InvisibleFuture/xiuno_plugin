@@ -1,0 +1,10 @@
+{
+    "name": "POST",
+    "brief": "这是针对有大图(横向全屏的 页面制作的显隐导航, 如果不打算放置顶部图片 可以注释掉footer_jsafter.htm的第三行",
+    "version": "1.0",
+    "bbs_version": "4.0",
+    "installed": 1,
+    "enable": 0,
+    "hooks_rank": [],
+    "dependencies": []
+}
