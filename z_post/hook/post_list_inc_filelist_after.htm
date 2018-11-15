@@ -1,0 +1,41 @@
+<!-- 一级回复 -->
+            <div class="reply_right f1 " >
+                    <div class="user_reply_time">
+                        <span>03-14</span>
+                        <span class="to_reply f2" onclick="showReply(this)">回复</span>
+                        <!--<span class="to_hide_reply f2" onclick="hidel2comments(this)">收起回复(1)</span>-->
+                    </div>
+            </div>
+            
+
+
+<?php
+//创建回复信息 直接从表中读取本次post的ID有多少回复
+$postreply = db_find('post_reply', array('pid'=>$_post['pid']), array('create_date'=>1));
+if($postreply) { foreach($postreply as $_posts) { 
+  //创建回复人的信息,每条回复都会被查询一遍似乎很消耗资源
+	$userz = user_read_cache($_posts['uid']);
+	$postz['username'] = array_value($userz, 'username');
+	$postz['user_avatar_url'] = array_value($userz, 'avatar_url');
+	$postz['user'] = $userz ? $userz : user_guest();
+	!isset($postz['floor']) AND  $postz['floor'] = '';
+?>
+              <!-- 剩下的就是细化UI了 -->
+							<br>
+							<a href="<?php echo url("user-$_posts[uid]");?>" tabindex="-1">
+								<img class="avatar" src="<?php echo $postz['user_avatar_url'];?>">
+							</a>
+							<?php echo $postz['username'];?>
+							<span class="user_reply_level">Lv7</span>
+							<?php echo $_posts['message'];?>
+							<!-- 二级回复 -->
+              <div class="reply_right f1 " >
+                <div class="user_reply_time">
+                  <span>03-14</span>
+                  <span class="to_reply f2" onclick="showReply(this)">回复</span>
+                  <!--<span class="to_hide_reply f2" onclick="hidel2comments(this)">收起回复(1)</span>-->
+                </div>
+              </div>
+<?php }} ?>
+
+

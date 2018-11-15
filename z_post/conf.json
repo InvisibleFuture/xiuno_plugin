@@ -1,0 +1,10 @@
+{
+    "name": "楼中楼",
+    "brief": "热点讨论,已经是大势所趋",
+    "version": "1.0",
+    "bbs_version": "4.0",
+    "installed": 1,
+    "enable": 0,
+    "hooks_rank": [],
+    "dependencies": []
+}
