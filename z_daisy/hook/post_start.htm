@@ -1,0 +1,20 @@
+<?php
+    //判断图片是否存在输出BG路径, 如果没有则为空
+	$u = db_find_one('attach', array('tid'=>$tid,'isimage'=>2));
+	if ($u==NULL){ $viewimg = '';}
+	else{ $viewimg = 'url('.$conf['upload_url'].'attach/'.$u['filename'].')'; }
+?>
+<!-- 部分 style 打包成文件放进气泡的 CSS, 只有列表,主题,编辑页面需要 主页不要 -->
+<style>.viewimg { background:#2C2A2A <?php echo $viewimg; ?>;  color:#CCC; }</style>
+
+
+
+<!-- CSS3 气泡 不能放全局 否则不需要气泡的页面会被遮挡-->
+<link rel="stylesheet" href="plugin/z_daisy/view/css/bubble.css">
+
+<!-- 主题图片的上传按钮, 只有编辑页需要 还要有删除按钮 -->
+<div class="row" style="padding: 0px 0 0 0">
+	<div class="col-lg-10 attachlist_parents">
+		<p class="small text-right"><label class="addattach" id="addattachs"><i class="icon-plus-square-o icon-3x"></i><input type="file"  multiple="multiple" /></label></p>
+	</div>
+</div>

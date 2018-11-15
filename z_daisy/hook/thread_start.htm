@@ -1,0 +1,35 @@
+<!-- 直接结束掉 container 并去除上下边距 -->
+</div>
+
+<?php
+    //判断图片是否存在 输出BG路径, 没有则为空
+	$u = db_find_one('attach', array('tid'=>$tid,'isimage'=>2));
+	if ($u==NULL){ $viewimg = '';}
+	else{ $viewimg = 'url('.$conf['upload_url'].'attach/'.$u['filename'].')'; }
+?>
+<!-- 部分 style 打包放进气泡的 CSS 文件, 只有列表,主题,编辑页面需要 主页不要 -->
+<style>
+.blog-background { background:#2C2A2A <?php echo $viewimg; ?>;  color:#CCC; }
+ #body { padding-bottom: 0; padding-top: 0;}
+</style>
+
+<!-- CSS3 气泡 不能放全局 否则不需要气泡的页面会被遮挡-->
+<link rel="stylesheet" href="plugin/z_daisy/view/css/bubble.css">
+
+<!-- DAISY 需要最大宽度, 所以要把 header 中限制宽度的 DIV 移到每个页面中去? -->
+<header id="masthead">
+    <div class="blog-background"></div>
+    <div class="inner">
+        <h1 class="blog-title" style="" itemprop="name"><?php echo $thread['subject'];?></h1>
+        <h2 class="blog-description light bordered bordered-top" style="" itemprop="description">12 月 23 日 2015 年  • 已有 3952 位童鞋围观过</h2>
+    </div>
+    <!-- CSS3 气泡 同上 放全局并先隐藏-->
+    <ul class="bg-bubbles">
+    <li></li><li></li><li></li><li></li><li></li>
+    <li></li><li></li><li></li><li></li><li></li>
+    </ul>
+</header>
+
+
+<!-- 重新开始 container 这是一种兼容的做法 thread 页的 id="body" 将失去意义-->
+<div class="container">

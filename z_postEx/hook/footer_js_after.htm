@@ -1,0 +1,159 @@
+<!-- 独立的 
+<div class="test">这是test</div>
+<p>这是p</p>
+<button onclick="afterText()">在图片后面添加文本</button>
+<br> 
+<br> 
+<br> 
+<script>
+//确认上面已经引用过JQ库文件
+function afterText(){
+  var txt1=$("<i></i>").text("love ");     // 通过 jQuery 创建元素
+  $(".test").after(txt1);                  // 在 img 之后插入新元素
+}
+</script>
+-->
+
+
+
+
+<!-- 正式回复 -->
+
+    <!--script src="//www-static.diyidan.net/static/addface/js/main.js?v=f9faff63b439fec824edbde022b77397"></script-->
+    <script src="plugin/z_post/main.js?v=f9faff63b439fec824edbde022b77397"></script>
+
+
+<!-- 二级回复中的一段 -->
+
+    <script type="text/javascript">
+        /*二级回复*/
+        function send_comment(item) {
+            do_l2commit(item);
+            /*if(getCookie('token_id') != null && getCookie('token_id')!=''){
+                do_l2commit(item);
+            }else{
+                onlyLogin()
+            }*/
+
+
+
+            //var p_inner_value = $('div.edit_container p.p_emoji_content')
+            //发送Ajax请求
+        }
+
+        function do_l2commit(item) {
+            var comment_id = $(item).closest('.reply_right').find('.comment_id_hidden').val();
+            var reply = getPcontentText($(item).closest('.write_reply').find('#write_container').get(0));
+            var ajax_url = "/main/post/l2comment";
+            var louzhu_id = "6293877835964134301";
+            $.ajax({
+                url: ajax_url, //登陆页面
+                type: "POST",
+                async: true,
+                timeout: 3000,
+                data: {
+                    "l1CommentId": comment_id,
+                    "comment": reply,
+                    "commentPage": parseInt('1', 10),
+                },
+                dataType: "json",
+                error: function() {},
+                success: function(data, status) { //如果调用成功
+                    // var jsonObject = JSON.parse(data);
+                    var code = data.code;
+                    if (code != 200) {
+                        if (data.message != null) {
+                            showMessagePopup(data.message);
+                        }
+                    } else {
+                        //TODO:后台会回传有多少二层回复的页数的
+                        var totalCount = data.data.totalCommentCount;
+                        var page_total_num = parseInt((totalCount - 1) / 10) + 1;
+                        $.ajax({
+                            url: "/main/post/l2comment",
+                            type: "GET",
+                            data: {
+                                "l1CommentId": comment_id,
+                                "page": page_total_num
+                            },
+                            async: true,
+                            timeout: 3000,
+                            dataType: "json",
+                            error: function() {},
+                            success: function(data, status) { //如果调用成功
+                                // var jsonObject = JSON.parse(data);
+                                var code = data.code;
+                                if (code != 200) {
+                                    if (data.message != null) {
+                                        showMessagePopup(data.message)
+                                    }
+                                } else {
+                                    displayAjaxL2commentList(item, $('script[type="text/template"]').html(), data.data, page_total_num, page_total_num, ajax_url, comment_id, louzhu_id);
+                                    $(item).closest('.write_reply').remove();
+                                }
+                            }
+                        });
+                    }
+                }
+            });
+        }
+</script>
+
+
+
+
+
+
+
+
+
+<!-- 底部js -->
+<script type="text/template">
+    <li class="clr" {display_str}>
+        <div class="user_ti f1">
+            <img src="{avatar}" onclick="{url_to_user}">
+        </div>
+        <div class="more_reply_right f1">
+            <div class="l2_comment user_name">
+                <span class="user_reply_name" onclick="{url_to_user}">{nickName}</span>
+                <span class="user_reply_level">Lv{level}</span> {louzhu_span}
+                <p>:&nbsp;&nbsp; {commentContent}</p>
+                <!--safe咋办-->
+            </div>
+            <div class="user_reply_time">
+
+                <span>{commentTime}</span>
+                <span class="to_reply f2" onclick="showReply(this)">回复</span>
+            </div>
+        </div>
+    </li>
+</script>
+<script type="text/templateCommentItem">
+    {anchor_str}
+    <li class="clr" style="margin-left:70px;position: relative">
+        <div class="user_ti f1">
+            <img src="{avatar}" onclick="{url_to_user}">
+        </div>
+        <div class="reply_right f1 " >
+            <input type="hidden" name="comment_id_hidden" class="comment_id_hidden" value="{commentId}" data-floor-num="{commentFloorNum}" />
+            <div class="user_name">
+                <span onclick="{url_to_user}">{nickName}</span>
+                <span class="user_reply_level">Lv{level}</span> {louzhu_span}
+                <span class="f2 ie2">{commentFloorNum}楼</span>
+            </div>
+
+            {pic_or_music_container_div}
+            <ul class="more_user_reply">
+                <div class="user_reply_time">
+                    {commentJudge_judgerRecommendStmt_div} {commentReward_rewardAmount_div}
+                    <span>{commentTime}</span>
+                    <span class="to_reply f2" onclick="showReply(this)">回复</span>
+                    <!--<span class="to_hide_reply f2" onclick="hidel2comments(this)">收起回复({commentl2TotalCount})</span>-->
+                </div>
+                {reply_li_container_div}
+            </ul>
+            {l2_comment_page_nav_div}
+        </div>
+        {commentJudge_judgeStampUrl_span} {commentReward_rewardStampUrl_span}
+    </li>
+</script> 

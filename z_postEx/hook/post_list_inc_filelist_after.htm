@@ -1,0 +1,108 @@
+<!-- 一级回复 -->
+            <div class="reply_right f1 " >
+                    <div class="user_reply_time">
+                        <span>03-14</span>
+                        <span class="to_reply f2" onclick="showReply(this)" style="cursor:pointer">一级回复</span>
+                        <!--<span class="to_hide_reply f2" onclick="hidel2comments(this)">收起回复(1)</span>-->
+                    </div>
+            </div>
+            
+
+
+<?php
+//创建回复信息 直接从表中读取本次post的ID有多少回复
+$postreply = db_find('post_reply', array('pid'=>$_post['pid']), array('create_date'=>1));
+if($postreply) { foreach($postreply as $_posts) { 
+  //创建回复人的信息,每条回复都会被查询一遍似乎很消耗资源
+	$userz = user_read_cache($_posts['uid']);
+	$postz['username'] = array_value($userz, 'username');
+	$postz['user_avatar_url'] = array_value($userz, 'avatar_url');
+	$postz['user'] = $userz ? $userz : user_guest();
+	!isset($postz['floor']) AND  $postz['floor'] = '';
+?>
+              <!-- 剩下的就是细化UI了 -->
+							<br>
+							<a href="<?php echo url("user-$_posts[uid]");?>" tabindex="-1">
+								<img class="avatar" src="<?php echo $postz['user_avatar_url'];?>">
+							</a>
+							<?php echo $postz['username'];?>
+							<span class="user_reply_level">Lv7</span>
+							<?php echo $_posts['message'];?>
+							<!-- 二级回复 -->
+              <div class="reply_right f1 " >
+                <div class="user_reply_time">
+                  <span>03-14</span>
+                  <span class="to_reply f2" onclick="showReply(this)" style="cursor:pointer">二级回复按钮</span>
+                  <!--<span class="to_hide_reply f2" onclick="hidel2comments(this)">收起回复(1)</span>-->
+                </div>
+              </div>
+<?php }} ?>
+
+
+<!-- 以下是全新的 POST -->
+<div class="list-item reply-wrap" data-id="461068570" data-index="0">
+  <div class="user-face">
+    <a href='<?php echo url("user-$_posts[uid]");?>' target="_blank" data-usercard-mid="14589321">
+      <img src="<?php echo $postz['user_avatar_url'];?>" alt="">
+    </a>
+  </div>
+  <div class="con ">
+
+    <div class="user">
+      <a data-usercard-mid="14589321" href='<?php echo url("user-$_posts[uid]");?>' target="_blank" class="name "><?php echo $postz['username'];?></a>
+      <a href="//www.bilibili.com/html/help.html#k_3" target="_blank"><i class="level l4"></i></a>
+    </div>
+
+    <p class="text">这标题不是化学，是哲学<img src="//i0.hdslb.com/bfs/vip/f8219e484d5a55787c3f1722dc3112d0eba03a69.png@50w_50h.webp" alt="思索"></p>
+
+    <div class="info">
+      <span class="floor">#22</span>
+      <span class="plad">来自<a href="//app.bilibili.com/" target="_blank">安卓客户端</a></span>
+      <span class="time">45分钟前</span>
+      <span class="like "><i></i><span>2</span></span>
+      <span class="hate "><i></i></span>
+      <span class="reply btn-hover btn-highlight">回复</span>
+      <div class="operation">
+        <div class="spot"></div>
+        <div class="opera-list" style="display: none;">
+          <ul>
+            <li class="blacklist">加入黑名单</li>
+            <li class="report">举报</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="reply-box">
+      <div class="reply-item reply-wrap" data-id="461092529" data-index="0">
+        <a href="//space.bilibili.com/43646124" data-usercard-mid="43646124" target="_blank" class="reply-face">
+          <img src="//i0.hdslb.com/bfs/face/ba27db05e3f0808b8ee0f19c817fb6219cf9e921.jpg@52w_52h.webp" alt="">
+        </a>
+        <div class="reply-con">
+          <div class="user">
+            <a href="//space.bilibili.com/43646124" target="_blank" data-usercard-mid="43646124" class="name ">美丽科学-BOS</a>
+            <a href="//www.bilibili.com/html/help.html#k_3" target="_blank"><i class="level l5"></i></a>
+            <span class="text-con">科学的尽头是艺术更是哲学 没毛病 哈哈哈哈</span>
+          </div>
+          <div class="info">
+            <span class="time">7分钟前</span>
+            <span class="like "><i></i><span></span></span>
+            <span class="reply btn-hover">回复</span>
+            <div class="operation btn-hover btn-hide-re">
+              <div class="spot"></div>
+              <div class="opera-list" style="display: none;">
+                <ul>
+                  <li class="blacklist">加入黑名单</li>
+                  <li class="report">举报</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="paging-box"></div>
+
+  </div>
+</div>

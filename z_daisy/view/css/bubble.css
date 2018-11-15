@@ -1,0 +1,170 @@
+/* 这是主视图的样式, 放进气泡的 CSS 文件以减少占用 */
+/*#masthead{box-shadow:0 .125rem .4375rem rgba(0,0,0,0.7);-webkit-box-shadow:0 .125rem .4375rem rgba(0,0,0,0.7)}*/
+#masthead{position:relative;display:table;text-align:center;width:100%;overflow:hidden;transition:all 1s;color:#fff;background-color:#1e1e1f}
+#masthead::before {content: "";position: absolute;top: 0;bottom: 0;left: 0;right: 0;background-color: rgba(0, 0, 0, 0.3);}
+#masthead::after {content: '';width: 150%;height: 4.375rem;background: #EEEEF2;left: -25%;bottom: -2.875rem;border-radius: 100%;position: absolute;}
+
+/* 标题 12px等于0.75rem*/
+.blog-title {font-size: 2.625rem;line-height: 1.5;margin-bottom: .5rem;font-weight: 200;}
+.light{font-weight:300 !important}
+.inner{display:table-cell;vertical-align:middle;position:relative;z-index:10;width:100%}
+
+.blog-description {font-size: .75rem;}
+.blog-background.loading{opacity:0}
+.blog-background{
+    /*background-attachment: fixed;*/
+    display:block;
+    width:100%;height:100%;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+    position:absolute;
+    left:0;top:0;
+    -webkit-filter: brightness(0.7);
+    -moz-filter: brightness(0.7);
+    -o-filter: brightness(0.7);
+    filter: brightness(0.7);
+    -webkit-transition:1s ease all;
+    -moz-transition:1s ease all;
+    -o-transition:1s ease all;
+    transition:5s ease all;
+    opacity:1
+}
+
+
+/*!
+ * CSS source:https://iu.tn/archives/qi-pao-piao-fu.html
+ */
+
+ .bg-bubbles {
+display:block;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: 1;
+ }
+
+ ul,li {
+margin: 0;
+padding: 0;
+ }
+
+ .bg-bubbles li {
+position: absolute;
+list-style: none;
+display: block;
+width: 40px;
+height: 40px;
+background-color: rgba(255,255,255,.07);
+bottom: -160px;
+-webkit-animation: square 25s infinite;
+animation: square 25s infinite;
+-webkit-transition-timing-function: linear;
+transition-timing-function: linear;
+border-radius: 5rem;
+ }
+
+ .bg-bubbles li:nth-child(1) {
+left: 10%
+ }
+
+ .bg-bubbles li:nth-child(2) {
+left: 20%;
+width: 80px;
+height: 80px;
+-webkit-animation-delay: 200ms;
+animation-delay: 200ms;
+-webkit-animation-duration: 17s;
+animation-duration: 17s
+ }
+
+ .bg-bubbles li:nth-child(3) {
+left: 25%;
+-webkit-animation-delay: 400ms;
+animation-delay: 400ms
+ }
+
+ .bg-bubbles li:nth-child(4) {
+left: 40%;
+width: 60px;
+height: 60px;
+-webkit-animation-duration: 30s;
+animation-duration: 30s;
+background-color: rgba(255, 255, 255, .1)
+ }
+
+ .bg-bubbles li:nth-child(5) {
+left: 70%
+ }
+
+ .bg-bubbles li:nth-child(6) {
+left: 80%;
+width: 80px;
+height: 80px;
+-webkit-animation-delay: 5s;
+animation-delay: 5s;
+background-color: rgba(255, 255, 255, .15)
+ }
+
+ .bg-bubbles li:nth-child(7) {
+left: 32%;
+width: 60px;
+height: 60px;
+-webkit-animation-delay: 7s;
+animation-delay: 7s
+ }
+
+ .bg-bubbles li:nth-child(8) {
+left: 55%;
+width: 20px;
+height: 20px;
+-webkit-animation-delay: 15s;
+animation-delay: 15s;
+-webkit-animation-duration: 40s;
+animation-duration: 40s
+ }
+
+ .bg-bubbles li:nth-child(9) {
+left: 25%;
+width: 10px;
+height: 10px;
+-webkit-animation-delay: 2s;
+animation-delay: 2s;
+-webkit-animation-duration: 40s;
+animation-duration: 40s;
+background-color: rgba(255, 255, 255, .1)
+ }
+
+ .bg-bubbles li:nth-child(10) {
+left: 90%;
+width: 80px;
+height: 80px;
+-webkit-animation-delay: 11s;
+animation-delay: 11s
+ }
+
+ @-webkit-keyframes square {
+0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0)
+}
+
+100% {
+    -webkit-transform: translateY(-700px) rotate(600deg);
+    transform: translateY(-700px) rotate(600deg)
+}
+ }
+
+ @keyframes square {
+0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0)
+}
+
+100% {
+    -webkit-transform: translateY(-700px) rotate(600deg);
+    transform: translateY(-700px) rotate(600deg)
+}
+ } /* 漂浮 */
