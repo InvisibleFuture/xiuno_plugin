@@ -1,0 +1,29 @@
+<?php include _include(APP_PATH.'view/htm/header.inc.htm');?>
+
+<link href=/static/css/app.68927446012606a09e5e69d157b5756e.css rel=stylesheet>
+<!--{hook forum_start.htm}-->
+
+
+
+
+
+<div id=app>
+    <div id=data>预读数据, 但不会显示出来 文章中可能存在链接 list 中只有 list 的链接 但是这样没有导航.. 首屏导航也是必要提供的</div>
+</div>
+
+<script type=text/javascript src=/static/js/manifest.2ae2e69a05c33dfc65f8.js></script>
+<script type=text/javascript src=/static/js/vendor.e4b9760a1641fce70b0b.js></script>
+<script type=text/javascript src=/static/js/app.f9ef6ba6e5262131f85d.js></script>
+
+<!--{hook forum_end.htm}-->
+
+</div>
+</main>
+
+<script>
+    $('li[data-active="fid-<?php echo $fid;?>"]').addClass('active');
+</script>
+</body>
+</html>
+
+<!--{hook forum_js.htm}-->
