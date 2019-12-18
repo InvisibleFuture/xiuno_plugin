@@ -1,0 +1,11 @@
+{
+    "name": "标签",
+    "brief": "主题任意加标签, 通过关联调取近相关的主题用于推送,<br><a style='font-size:12px;' href='https://gitee.com/soyoumi/git_tags' target='_blank'>协作完善<a>",
+    "version": "1.0.0",
+    "bbs_version": "4.3",
+    "installed": 1,
+    "enable": 1,
+    "hooks_rank": [],
+    "overwrites_rank": [],
+    "dependencies": []
+}

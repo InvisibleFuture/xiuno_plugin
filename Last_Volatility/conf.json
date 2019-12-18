@@ -1,0 +1,11 @@
+{
+    "name": "Volatility",
+    "brief": "与浏览器融为一体 - 更接近原生APP的主题, 目前仅作用于手机页面, (更新: 修复导航滚动)",
+    "version": "1.2",
+    "bbs_version": "4.0",
+    "installed": 1,
+    "enable": 1,
+    "hooks_rank": [],
+    "overwrites_rank": [],
+    "dependencies": []
+}

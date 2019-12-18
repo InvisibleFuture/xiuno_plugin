@@ -1,0 +1,11 @@
+<a class="user_avatar" href='<?php echo url("user-$thread[uid]");?>' tabindex="-1">
+    <img class="avatar-3 mr-3" src="<?php echo $thread['user_avatar_url'];?>">
+</a>
+<div>
+    <div class="a">
+        <span class="username">
+            <a href="<?php echo url("user-$thread[uid]");?>"
+                class="text-muted font-weight-bold"><?php echo $thread['username'];?></a>
+        </span>
+    </div>
+    <div class="b">

@@ -1,0 +1,21 @@
+<script>
+    // 监听滚动事件，判断滚动方向
+    var Before_scollH = 0
+    var header_phone = $("header.header_phone")
+    var header_phonex = $("header.header_phone ul:first-child")
+    $(window).on('scroll', function () {
+        var After_scollH = $(window).scrollTop()
+        var differH = After_scollH - Before_scollH
+        if (differH == 0) { return false }
+        if (differH > 0) {
+            if ($(document).scrollTop() < 50) { return false }
+            $('nav').removeClass('shrink');
+        } else {
+            //if (document.documentElement.scrollHeight-document.documentElement.scrollTop-document.documentElement.clientHeight < 50) { return false }
+            if ($(document).height() - $(document).scrollTop() - $(window).height() < 50) { return false }
+            $('nav').addClass('shrink');
+        }
+        Before_scollH = After_scollH
+    })
+</script>
+<script src="plugin/Last_Volatility/view/js/user.js?v11" type="text/javascript"></script>
