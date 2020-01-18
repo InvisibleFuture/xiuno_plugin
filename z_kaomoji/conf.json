@@ -1,0 +1,10 @@
+{
+    "name": "颜文字  ~ ( ゜- ゜)つロ 乾杯~",
+    "brief": "颜文字插件,用于替代传统图片表情, 重构脱离了对 bootstrap 的依赖/降低了反复加载对资源的浪费/增加了动画效果",
+    "version": "3.0",
+    "bbs_version": "4.0",
+    "installed": 1,
+    "enable": 1,
+    "hooks_rank": [],
+    "dependencies": []
+}
